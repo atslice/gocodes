@@ -73,4 +73,62 @@ func main() {
 	fmt.Println("false || true:", or(5 < 2, true))
 	fmt.Println("true || true:", or(5 >= 2, true))
 	fmt.Println("not true:", not(true))
+
+	// bit operator
+	fmt.Println("0 & 0:", 0&0)
+	fmt.Println("0 & 1:", 0&1)
+	fmt.Println("1 & 0:", 1&0)
+	fmt.Println("1 & 1:", 1&1)
+	fmt.Println("0 | 0:", 0|0)
+	fmt.Println("0 | 1:", 0|1)
+	fmt.Println("1 | 0:", 1|0)
+	fmt.Println("1 | 1:", 1|1)
+	fmt.Println("0 ^ 0:", 0^0)
+	fmt.Println("0 ^ 1:", 0^1)
+	fmt.Println("1 ^ 0:", 1^0)
+	fmt.Println("1 ^ 1:", 1^1)
+	var sa = 5
+	var sb = 30
+	fmt.Println("sa & sb:", sa&sb)
+	fmt.Println("sa | sb:", sa|sb)
+	fmt.Println("sa ^ sb:", sa^sb)
+	fmt.Println("1<<0:", 1<<0)
+	fmt.Println("1<<1:", 1<<1)
+	fmt.Println("1<<2:", 1<<2)
+	fmt.Println("1<<3:", 1<<3)
+	fmt.Println("1<<4:", 1<<4)
+	fmt.Println("1<<5:", 1<<5)
+	fmt.Println("0<<0:", 0<<0)
+	fmt.Println("0<<1:", 0<<1)
+	fmt.Println("0<<2:", 0<<2)
+	fmt.Println("0<<3:", 0<<3)
+	fmt.Println("32>>0:", 32>>0)
+	fmt.Println("32>>1:", 32>>1)
+	fmt.Println("32>>2:", 32>>2)
+	fmt.Println("32>>3:", 32>>3)
+	fmt.Println("32>>4:", 32>>4)
+	fmt.Println("32>>5:", 32>>5)
+	fmt.Println("32>>6:", 32>>6)
+
+	// =
+	// +=
+	// -=
+	// *=
+	// /=
+	// %=
+	// <<=
+	// >>=
+	// &=
+	// ^=
+	// |=
+	// & to get address
+	// * pointer
+	var ai = 68
+	var ptr *int
+	fmt.Println("value of ai:", ai)
+	fmt.Println("memeory address &ai:", &ai)
+	ptr = &ai
+	fmt.Println("ptr = &ai")
+	fmt.Println("*ptr:", *ptr)
+	fmt.Println("ptr:", ptr)
 }
