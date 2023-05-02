@@ -28,6 +28,20 @@ func for_condition() {
 	fmt.Println(i)
 }
 
+// use key word continue to skip the rest logic and go to next loop
+func for_continue() {
+	fmt.Println("for_continue:")
+	sum := 0
+	for i := 0; i < 5; i++ {
+		if i%2 == 0 {
+			continue // skip even
+		}
+		fmt.Println(i)
+		sum += i
+	}
+	fmt.Println(sum)
+}
+
 // for body will always be executed without condition, which is similar with for true
 // use key word break to end the for loop
 func for_break() {
@@ -42,18 +56,20 @@ func for_break() {
 	fmt.Println(i)
 }
 
-// use key word continue to skip the rest logic and go to next loop
-func for_continue() {
-	fmt.Println("for_continue:")
-	sum := 0
-	for i := 0; i < 5; i++ {
-		if i%2 == 0 {
-			continue // skip even
+// use mark to mark the code place, specify mark to break
+func for_break_mark() {
+	fmt.Println("for_break_mark:")
+	for i := 0; i < 3; i++ {
+	mark: // mark can be any legal identifier
+		for j := 0; j < 3; j++ {
+			for k := 0; k < 3; k++ {
+				if k > 1 {
+					break mark // break for j := 0; j < 3; j++ {}, the for i := 0; i < 3; i++ {} body will be continued
+				}
+				fmt.Println(i, j, k)
+			}
 		}
-		fmt.Println(i)
-		sum += i
 	}
-	fmt.Println(sum)
 }
 
 // check if an int is prime
@@ -93,5 +109,6 @@ func main() {
 	for_condition()
 	for_break()
 	for_continue()
+	for_break_mark()
 
 }
