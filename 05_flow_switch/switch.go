@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 // switch example
 func check_media(x string) string {
@@ -57,6 +60,19 @@ func menu(x int) {
 	}
 }
 
+// switch without condition
+func switch_condition() {
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 17:
+		fmt.Println("Good afternoon.")
+	default:
+		fmt.Println("Good evening.")
+	}
+}
+
 func main() {
 
 	fmt.Println(check_media("amazon"))
@@ -76,5 +92,6 @@ func main() {
 	menu(9)
 	menu(10)
 	// menu("sfe")  // cannot use "sfe" (untyped string constant) as int value in argument to menu (exit status 1)
+	switch_condition()
 
 }
