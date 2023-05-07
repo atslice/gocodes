@@ -4,7 +4,7 @@ import "fmt"
 
 // array stores a group of variables of the same type
 // var identifier [n]type
-// where n is int,
+// where n is int, the number of the members, it is fixed
 func array_declare() {
 	fmt.Println("array_declare()")
 	var a [2]string // declare an array of string identified as a, which has two memebers
