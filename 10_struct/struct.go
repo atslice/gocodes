@@ -52,6 +52,21 @@ func struct_init() {
 		english float64
 		phy     float64
 	}
+	cindy := credits{"Cindy", 96.0, 100, 59.8}
+	fmt.Println(cindy)
+
+	// use "Name: value" for assignment
+	diana := credits{name: "Diana", english: 99.6} // other field will be given zero-value
+	fmt.Println(diana)                             // {Diana 0 99.6 0}
+
+	nobody := credits{} // all fields got zero-value
+	fmt.Println(nobody) // { 0 0 0}
+	nobody.name = "Tina"
+	nobody.math = 100.0
+	nobody.english = 100.0
+	nobody.phy = 100.0
+	fmt.Println(nobody) // {Tina 100 100 100}
+
 }
 
 func main() {
@@ -61,4 +76,5 @@ func main() {
 	fmt.Println(Vertex{1, 2})
 	struct_memeber()
 	struct_pointer()
+	struct_init()
 }
