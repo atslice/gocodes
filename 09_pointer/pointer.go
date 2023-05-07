@@ -7,9 +7,9 @@ func pointer_declare() {
 	fmt.Println("pointer_declare():")
 	var pt *int // declare a pointer, the zero value is nil
 	i := 15
-	pt = &i // the & operator gets the memory address of the variable
-	fmt.Println(pt)
-	fmt.Println(*pt)
+	pt = &i          // the & operator gets the memory address of the variable
+	fmt.Println(pt)  // memory address
+	fmt.Println(*pt) // read the value of variable i by pointer
 }
 
 // "runtime error: invalid memory address or nil pointer dereference"
@@ -20,7 +20,17 @@ func pointer_declare_error() {
 	fmt.Println(*pt)
 }
 
-// the type of the variable that a pointer points to much match the pointer declaration;
+// operate variable by pointer
+func pointer() {
+	fmt.Println("pointer():")
+	j := 56
+	p := &j         // point to j
+	*p = *p / 29    // operate j by pointer
+	fmt.Println(*p) // check the value
+	fmt.Println(j)  // check the value
+}
+
+// the type of the variable that a pointer points to must match the pointer declaration;
 func pointer_assignment_error() {
 	var pti *int // declare a pointer, the zero value is nil
 	var pts *string
@@ -34,18 +44,8 @@ func pointer_assignment_error() {
 	fmt.Println(*pts)
 }
 
-func pointer() {
-	i, j := 42, 2701
-
-	p := &i         // 指向 i
-	fmt.Println(*p) // 通过指针读取 i 的值
-	*p = 21         // 通过指针设置 i 的值
-	fmt.Println(i)  // 查看 i 的值
-
-	p = &j         // 指向 j
-	*p = *p / 37   // 通过指针对 j 进行除法运算
-	fmt.Println(j) // 查看 j 的值
-}
+// go does not support operation of pointer
+// question: what is the purpose of introducing pointer? What is the use case?
 
 func main() {
 	pointer_declare()
