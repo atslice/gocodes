@@ -57,9 +57,50 @@ func slice_default_bound() {
 	// fmt.Println(s5)
 }
 
+// the length of a slice is the number of the members
+// the capacity of a slice is the number counting from the first member of the slice to the last member of the underlying array
+func slice_len_cap() {
+	fmt.Println("slice_len_cap():")
+	s := []int{2, 3, 5, 7, 11, 13}
+	printSlice(s) // len=6 cap=6 [2 3 5 7 11 13]
+
+	s = s[:0]     // the length is zero
+	printSlice(s) // len=0 cap=6 []
+
+	s = s[:4]     // extend the length
+	printSlice(s) // len=4 cap=6 [2 3 5 7]
+
+	s = s[2:]     // drop the first two members
+	printSlice(s) // len=2 cap=4 [5 7]
+
+	s = s[:3]
+	printSlice(s) // len=3 cap=4 [5 7 11]
+
+	s = s[:4]
+	printSlice(s) // len=4 cap=4 [5 7 11 13]
+
+	// s = s[:5] // "runtime error: slice bounds out of range [:5] with capacity 4"
+	// printSlice(s)
+}
+
+func printSlice(s []int) {
+	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s)
+}
+
+// the zero value of a slice is nil
+// the length and cap of the slice of nil are both 0
+// the slice of nil has no underlying array
+func zero_slice() {
+	fmt.Println("zero_slice():")
+	var s []int                                         // nil slice
+	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s) // len=0 cap=0 []
+}
+
 func main() {
 	slice_array()
 	slice_quote()
 	slice_init()
 	slice_default_bound()
+	slice_len_cap()
+	zero_slice()
 }
