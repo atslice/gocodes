@@ -96,6 +96,46 @@ func zero_slice() {
 	fmt.Printf("len=%d cap=%d %v\n", len(s), cap(s), s) // len=0 cap=0 []
 }
 
+// The make built-in function allocates and initializes an object of type slice, map, or chan (only).
+// Like new, the first argument is a type, not a value.
+// Unlike new, make's return type is the same as the type of its argument, not a pointer to it.
+// The specification of the result depends on the type:
+// Slice: The size specifies the length. The capacity of the slice is equal to its length.
+// A second integer argument may be provided to specify a different capacity;
+// it must be no smaller than the length.
+// For example, make([]int, 0, 10) allocates an underlying array of size 10
+// and returns a slice of length 0 and capacity 10 that is backed by this underlying array.
+func make_slice() {
+	fmt.Println("make_slice():")
+	a := make([]int, 5) // if only one integer argument is specified, make function creates an array with the int memembers with zero-values, and returns a slice that is backed by this underlying array with length and capacity of the argument int
+	fmt.Println("make_slice(): a")
+	printSlice(a) // len=5 cap=5 [0 0 0 0 0]
+
+	b := make([]int, 0, 5)
+	fmt.Println("make_slice(): b")
+	printSlice(b) // len=0 cap=5 []
+
+	c := b[:2]
+	fmt.Println("make_slice(): c")
+	printSlice(c) // len=2 cap=5 [0 0]
+
+	d := c[2:5]
+	fmt.Println("make_slice(): d")
+	printSlice(d) // len=3 cap=3 [0 0 0]
+
+	e := make([]int, 3, 7) // if two integer arguments are specified, the first integer is as length, the second integer is as capacity
+	fmt.Println("make_slice(): e")
+	printSlice(e) // len=3 cap=7 [0 0 0]
+
+	f := e[:7]
+	fmt.Println("make_slice(): f")
+	printSlice(f) // len=7 cap=7 [0 0 0 0 0 0 0]
+
+	g := e[2:5]
+	fmt.Println("make_slice(): g")
+	printSlice(g) // len=3 cap=5 [0 0 0]
+}
+
 func main() {
 	slice_array()
 	slice_quote()
@@ -103,4 +143,5 @@ func main() {
 	slice_default_bound()
 	slice_len_cap()
 	zero_slice()
+	make_slice()
 }
