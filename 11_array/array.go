@@ -35,9 +35,17 @@ func array_init() {
 	fmt.Println(primes)                  // [2 3 5 7 11 13]
 }
 
+// let compiler count the members when initialized
+func array_init2() {
+	fmt.Println("array_init2()")
+	a := [...]string{"hello", "world"}
+	fmt.Println(a)
+}
+
 func main() {
 
 	array_declare()
 	array_init()
+	array_init2()
 
 }

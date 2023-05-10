@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // var identifier []type
 // the number of the members in array is fixed, slice is dynamic
@@ -136,6 +139,48 @@ func make_slice() {
 	printSlice(g) // len=3 cap=5 [0 0 0]
 }
 
+func game_slice() {
+	// 创建一个井字板（经典游戏）
+	board := [][]string{
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+	}
+
+	// 两个玩家轮流打上 X 和 O
+	board[0][0] = "X"
+	board[2][2] = "O"
+	board[1][2] = "X"
+	board[1][0] = "O"
+	board[0][2] = "X"
+
+	for i := 0; i < len(board); i++ {
+		fmt.Printf("%s\n", strings.Join(board[i], " "))
+	}
+}
+
+func slice_append() {
+	fmt.Println("slice_append(): ")
+	var s []int   // empty slice
+	printSlice(s) // len=0 cap=0 []
+
+	s = append(s, 0) // append a memeber to the slice
+	printSlice(s)    // len=1 cap=1 [0]
+
+	s = append(s, 1) // append a memeber to the new slice
+	printSlice(s)    // len=2 cap=2 [0 1]
+
+	s = append(s, 2, 3, 4) // append mutliple members once
+	printSlice(s)          // len=5 cap=6 [0 1 2 3 4]
+
+	s = append(s, 5) // try to see how compiler decide the cap
+	printSlice(s)    // len=6 cap=6 [0 1 2 3 4 5]
+
+	// when the underlying array can not cap the new members, a larger array will be created and a slice that underlys the array is returned
+	s = append(s, 6, 7) // try to see how compiler decide the cap
+	printSlice(s)       // len=8 cap=12 [0 1 2 3 4 5 6 7]
+}
+
 func main() {
 	slice_array()
 	slice_quote()
@@ -144,4 +189,6 @@ func main() {
 	slice_len_cap()
 	zero_slice()
 	make_slice()
+	game_slice()
+	slice_append()
 }
