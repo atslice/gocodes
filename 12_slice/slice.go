@@ -181,6 +181,16 @@ func slice_append() {
 	printSlice(s)       // len=8 cap=12 [0 1 2 3 4 5 6 7]
 }
 
+// use for ...range iteration
+func slice_iteration() {
+	// var alphabet = []string{'a', 'b', 'c', "d", "e"}  //  cannot use 'a' (untyped rune constant 97) as string value in array or slice literal
+	// cannot use 'b' (untyped rune constant 98) as string value in array or slice literal
+	var alphabet = []string{"a", "b", "c", "d", "e"}
+	for index, value := range alphabet { // for ... range iterate slice or map
+		fmt.Printf("%d: %s\n", index, value) // range returns the index and a copy of the value in slice
+	}
+}
+
 func main() {
 	slice_array()
 	slice_quote()
@@ -191,4 +201,5 @@ func main() {
 	make_slice()
 	game_slice()
 	slice_append()
+	slice_iteration()
 }
