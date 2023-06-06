@@ -191,6 +191,19 @@ func slice_iteration() {
 	}
 }
 
+// if you do not need one of the return value, use _ as the var indentifier
+// for index, _ := range some_slice {...}
+// for _, value := range some_slice {...}
+func slice_iter_index() {
+	pow := make([]int, 10)
+	for index := range pow {
+		pow[index] = 1 << uint(index) // == 2**i
+	}
+	for _, value := range pow {
+		fmt.Printf("%d\n", value)
+	}
+}
+
 func main() {
 	slice_array()
 	slice_quote()
@@ -202,4 +215,5 @@ func main() {
 	game_slice()
 	slice_append()
 	slice_iteration()
+	slice_iter_index()
 }
