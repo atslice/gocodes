@@ -4,11 +4,11 @@ import "fmt"
 
 // getSequence() is a function, its returned value is a function as well
 // getSequence() returns a function which accepts one string parameters and returns an int
-// the function returned by getSequence() has no name(anonymous), it is a function closure
+// the function returned by getSequence() has no name(anonymous),
 // getSequence() declares a variable i internally
-// the anonymous function(function closure: func(mark string) int) uses the variable i without declaration
-// the value of the variable i inside "function closure: func(mark string) int" is bound with the function closure itself
-// think of object and attribute in python language
+// the anonymous function uses the variable i without declaration
+// 闭包不一定是匿名函数，也可以是实名函数
+
 func getSequence() func(string) int {
 	i := 0
 	fmt.Println("inside getSequence(): i = ", i)
@@ -22,7 +22,9 @@ func getSequence() func(string) int {
 func main() {
 	/* nextNumber 为一个函数，函数 的变量i 为 0 */
 	nextNumber := getSequence() // inside getSequence(): i =  0
-	// a fcuntion closure func(mark string) int is created
+	// a fcuntion closure nextNumber func(mark string) int is created
+	// the value of the variable i inside "function closure: func(mark string) int" is bound with the function closure itself
+	// think of object and attribute in python language
 
 	/* 调用 nextNumber 函数，i 变量自增 1 并返回 */
 	fmt.Println(nextNumber("nextNumber")) //这个执行结果是1
