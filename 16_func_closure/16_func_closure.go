@@ -7,7 +7,7 @@ import "fmt"
 // the function returned by getSequence() has no name(anonymous), it is a function closure
 // getSequence() declares a variable i internally
 // the anonymous function(function closure: func(mark string) int) uses the variable i without declaration
-// the value of the variable i inside "function closure: func(mark string) int" is bounded with the function closure itself
+// the value of the variable i inside "function closure: func(mark string) int" is bound with the function closure itself
 // think of object and attribute in python language
 func getSequence() func(string) int {
 	i := 0
